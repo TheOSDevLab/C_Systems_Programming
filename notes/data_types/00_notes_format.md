@@ -2,106 +2,101 @@
 
 ## Definition
 
-* Fundamental integral/floating type (specify).
-* Conceptual role: numeric, symbolic, or memory representation.
-* Distinct from derived types (arrays, pointers, structs).
-* Reference: ISO/IEC 9899 §6.2.5.
+**Goal:** Describe what the type is and its conceptual role.
+**Include:**
+
+* Whether it is a fundamental type, integral or floating-point.
+* Main purpose / conceptual use (numeric, character, symbolic, memory).
+* How it differs from derived types like arrays, structs, pointers.
+* Reference to the C standard section(s) governing the type.
 
 ---
 
 ## Declaration and Initialization
 
-```c
-<DataTypeName> var;
-<DataTypeName> var = initial_value;
-```
+**Goal:** Show how variables of this type are declared and initialized.
+**Include:**
 
-* Compatible storage classes: automatic, static, extern, register.
-* Multiple declarations: `var1, var2, var3;`
-* Pitfalls: uninitialized variables, implicit signedness issues.
+* Basic declaration syntax.
+* Optional initialization examples.
+* Storage class options if relevant.
+* Multi-variable declaration example.
+* Common pitfalls to avoid.
 
 ---
 
 ## Modifiers and Variants
 
-* List relevant modifiers (`signed`, `unsigned`, `short`, `long`).
-* Example: `signed char`, `unsigned char`.
-* Notes: Not all modifiers valid for all types (e.g., `long char` invalid).
+**Goal:** Summarize type modifiers and alternative forms.
+**Include:**
+
+* Valid modifiers (signed/unsigned, short/long, etc.) for this type.
+* What each variant guarantees (size, signedness).
+* Invalid or unsupported modifiers.
 
 ---
 
 ## Size, Range and Format Specifiers
 
-* Typical `sizeof()` and bits (`CHAR_BIT` for `char`).
-* Min/max values from `<limits.h>` or `<float.h>`.
-* I/O format specifiers for `printf`/`scanf`.
+**Goal:** Capture size, representable values, and how to use the type in I/O.
+**Include:**
 
-Example for `char`:
-
-```c
-sizeof(char) == 1
-CHAR_MIN, CHAR_MAX, SCHAR_MIN, SCHAR_MAX, UCHAR_MAX
-printf("%c", c); printf("%d", (int)c);
-```
+* Typical `sizeof()` and bit width.
+* Minimum and maximum values (macros or constants).
+* Format specifiers for `printf` and `scanf`.
 
 ---
 
 ## Operations and Promotions
 
-* Supported operations: arithmetic, logical, bitwise, increment/decrement.
-* Integer promotion and usual arithmetic conversions apply.
-* Overflow/underflow behavior (wrap for unsigned, undefined for signed).
-* Example:
+**Goal:** Note which operations are supported and how the type behaves in expressions.
+**Include:**
 
-```c
-char a = 10, b = 20;
-char c = a + b; // promoted to int, result cast back
-```
+* Arithmetic, logical, relational, bitwise operations.
+* Increment/decrement.
+* Integer promotion and conversions when combined with other types.
+* Behavior under overflow/underflow (signed/unsigned).
 
 ---
 
 ## Practical Uses
 
-* Character storage and text processing.
-* Small integer storage or byte-level memory manipulation.
-* Example (OS/embedded):
+**Goal:** Give context for when and why this type is used.
+**Include:**
 
-```c
-unsigned char buf[256];
-for(int i=0;i<256;i++) buf[i] = i;
-```
+* Typical applications (text, numeric computation, memory buffers).
+* A small code snippet illustrating usage.
 
 ---
 
 ## Example Code
 
-```c
-#include <stdio.h>
-#include <limits.h>
+**Goal:** Provide a minimal working program using the type.
+**Include:**
 
-int main(void) {
-    char c = 'G';
-    printf("Char: %c, Numeric: %d\n", c, (int)c);
-    printf("Size: %zu bytes, CHAR_BIT = %d\n", sizeof(c), CHAR_BIT);
-    return 0;
-}
-```
+* Declaration, assignment, printing, possibly size/range checks.
+* Keep concise but illustrative.
 
 ---
 
 ## Portability and Best Practices
 
-* Signedness of plain `char` is implementation-defined.
-* Use `signed char` or `unsigned char` for clarity.
-* Prefer fixed-width types (`int8_t`, `uint8_t`) for portability.
-* Avoid assuming `CHAR_BIT == 8`.
+**Goal:** Highlight platform-specific considerations and recommendations.
+**Include:**
+
+* Implementation-defined behaviors (e.g., signedness, byte size).
+* Recommended type choices for portability.
+* Guidelines to avoid common mistakes.
 
 ---
 
 ## Related Types
 
-* `signed char`, `unsigned char`
-* `<stdint.h>` types: `int8_t`, `uint8_t`
-* Wide/Unicode characters: `wchar_t`, `char16_t`, `char32_t`
+**Goal:** Point out closely related types and alternatives.
+**Include:**
+
+* Variants of the type (e.g., `signed char`, `unsigned char`).
+* Fixed-width alternatives (`int8_t`, `uint8_t`).
+* Other relevant types (`wchar_t`, `char16_t`, etc.).
 
 ---
